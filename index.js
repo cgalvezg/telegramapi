@@ -9,16 +9,17 @@ var cron = require('node-cron');
 var text = fs.readFileSync("./chistes.txt").toString('utf-8');
 var chisteRandom = text.split("---");
 let botEncendido = false;
+require('dotenv').config();
 
 
 let baseDeDatos = read(RUTA);
 //cxv
 
 
-const apiId = 25828712;
-const apiHash = '3220a7b5406658ac1f9209bae24dd8cd';
-const stringSession = new StringSession("1BAAOMTQ5LjE1NC4xNjcuOTEAUGijtd3G3sfi99YYaKdlc6Mjt/ErmL8IOmK2Y9nX1RGU2EI/SzLAzirfzw7goG2kFc/hiVPXVeDoxp5FaAB5zQ7Cq2qTX2ZeVsCNYavyX9Bj+JygKmzqR9aKY4Uj3j7u+8VMkirjb/MzdCuucpvtWkxOA2GUvbIA1z4DRwUOdBpw/Z5UgI18+NAlPq4nHaXY+Ry9v8vcxq34+bCMJkpl2XPy0HlFpBJnpDUY4c0Is33QsTSUyHxpXDgHP4eWwGjuZo/EvjQ8IWFtwW0tbaI4sXXUGQBhs1FhZAuLMyU3g4QLG8dUpTIvTLu5luFBiNMYY/J6xapKtwuvMkbs3HY+8l8="); // fill this later with the value from session.save()
-const cafeta = "-1001026904390";
+const apiId = Number(String(process.env.API_ID));
+const apiHash = process.env.API_HASH;
+const stringSession = new StringSession(process.env.STRING_SESSION); // fill this later with the value from session.save()
+const cafeta = process.env.CAFETA;
 let dato =[]   
 let stringMensajes = [] 
 
