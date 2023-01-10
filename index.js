@@ -4,24 +4,22 @@ const { StringSession } = require('telegram/sessions');
 const  input = require ('input');
 const fs = require("fs");
 const { betterConsoleLog } = require("telegram/Helpers");
-const RUTA = "./base_de_datos.json";
-var cron = require('node-cron');
-var text = fs.readFileSync("./chistes.txt").toString('utf-8');
-var chisteRandom = text.split("---");
+const RUTA = __dirname + '/base_de_datos.json';
+let cron = require('node-cron');
+let text = fs.readFileSync(__dirname + '/chistes.txt').toString('utf-8');
+let chisteRandom = text.split("---");
 let botEncendido = false;
-require('dotenv').config();
-
-
+require('dotenv').config({path:__dirname + '/.env'});
 let baseDeDatos = read(RUTA);
-//cxv
-
+let dato =[]   
+let stringMensajes = [] 
 
 const apiId = Number(String(process.env.API_ID));
 const apiHash = process.env.API_HASH;
-const stringSession = new StringSession(process.env.STRING_SESSION); // fill this later with the value from session.save()
 const cafeta = process.env.CAFETA;
-let dato =[]   
-let stringMensajes = [] 
+
+const stringSession = new StringSession(process.env.STRING_SESSION); // fill this later with the value from session.save()
+
 
     const client = new TelegramClient(stringSession, apiId, apiHash, {
         connectionRetries: 5,
