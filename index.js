@@ -18,6 +18,8 @@ const apiId = Number(String(process.env.API_ID));
 const apiHash = process.env.API_HASH;
 const cafeta = process.env.CAFETA;
 
+//prueba git
+
 const stringSession = new StringSession(process.env.STRING_SESSION); // fill this later with the value from session.save()
 
 
